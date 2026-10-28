@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de IA Aplicada al Trabajo y Automatización | IMPULSA</title>
+    <meta name="description" content="Aprende inteligencia artificial generativa y automatización de tareas. Formación 100% online, práctica y sin conocimientos técnicos previos.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Curso de IA Aplicada al Trabajo y Automatización | IMPULSA">
+    <meta property="og:description" content="Multiplica tu productividad y automatiza tareas repetitivas. 12 semanas, 100% online.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_ES">
+
+    <!-- Preconnect & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9', // Azul principal IMPULSA
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e', // Azul oscuro
+                        },
+                        accent: {
+                            500: '#f59e0b', // Naranja/Ambar de acento para conversión
+                            600: '#d97706',
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Ocultar barra de scroll pero mantener funcionalidad */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .accordion-content {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .accordion-content.open {
+            max-height: 500px;
+            opacity: 1;
+        }
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+        .accordion-icon.open {
+            transform: rotate(180deg);
+        }
+        .spinner {
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .modal-enter {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        .modal-enter-active {
+            opacity: 1;
+            transform: scale(1);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        .bg-pattern {
+            background-color: #0c4a6e;
+            background-image: radial-gradient(#0ea5e9 0.5px, transparent 0.5px), radial-gradient(#0ea5e9 0.5px, #0c4a6e 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+        }
+    </style>
+
+    <!-- JSON-LD SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "IA aplicada al trabajo: automatización y productividad",
+      "description": "Programa de 12 semanas 100% online para aprender inteligencia artificial generativa, automatización de tareas y herramientas digitales.",
+      "provider": {
+        "@type": "Organization",
+        "name": "IMPULSA",
+        "sameAs": "https://www.impulsa.es"
+      },
+      "educationalCredentialAwarded": "Certificado de Participación",
+      "offers": {
+        "@type": "Offer",
+        "price": "1490",
+        "priceCurrency": "EUR"
+      }
+    }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
+
+    <!-- 1. Header Minimalista -->
+    <header class="bg-white sticky top-0 z-40 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo IMPULSA -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <svg class="h-8 w-auto text-brand-600" viewBox="0 0 100 30" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="IMPULSA">
+                        <path d="M10 5L20 25H0L10 5Z" fill="currentColor"/>
+                        <text x="25" y="22" font-size="20" font-weight="800" fill="#0f172a" class="font-sans tracking-tight">IMPULSA</text>
+                    </svg>
+                </div>
+                <!-- CTA Button -->
+                <div>
+                    <a href="#solicitar-info" class="inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-semibold rounded-lg text-white bg-brand-600 hover:bg-brand-700 transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500">
+                        Solicitar información
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- 2. Hero Section -->
+        <section id="hero" class="relative bg-pattern pt-16 pb-20 lg:pt-24 lg:pb-28 overflow-hidden">
+            <div class="absolute inset-0 bg-brand-900/80"></div>
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
+                    
+                    <!-- Copy Hero -->
+                    <div class="lg:col-span-7 text-center lg:text-left mb-12 lg:mb-0">
+                        <div class="inline-flex items-center px-3 py-1 rounded-full bg-brand-100/10 border border-brand-100/20 text-brand-100 text-sm font-medium mb-6">
+                            <span class="flex w-2 h-2 rounded-full bg-brand-400 mr-2"></span>
+                            Matrícula abierta
+                        </div>
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
+                            Domina la Inteligencia Artificial y <span class="text-accent-500">multiplica tu productividad</span>
+                        </h1>
+                        <p class="text-lg sm:text-xl text-slate-300 mb-8 max-w-2xl mx-auto lg:mx-0">
+                            Aprende a automatizar tareas repetitivas y aplicar la IA en tu entorno laboral. Un programa online y práctico diseñado para profesionales.
+                        </p>
+                        
+                        <!-- Datos Clave -->
+                        <div class="grid grid-cols-2 gap-4 sm:gap-6 text-left">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <svg class="h-5 w-5 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-sm text-slate-200 font-medium">12 semanas</p>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <svg class="h-5 w-5 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-sm text-slate-200 font-medium">100% online</p>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <svg class="h-5 w-5 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-sm text-slate-200 font-medium">Clases en directo</p>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <svg class="h-5 w-5 text-accent-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                                    </svg>
+                                </div>
+                                <p class="ml-3 text-sm text-slate-200 font-medium">Sin conocimientos técnicos</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Formulario Hero -->
+                    <div id="solicitar-info" class="lg:col-span-5">
+                        <div class="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden form-container relative">
+                            <div class="px-6 py-8 sm:p-10">
+                                <div class="mb-8 text-center">
+                                    <h2 class="text-2xl font-bold text-slate-900 mb-2">Solicita información gratuita</h2>
+                                    <p class="text-sm text-slate-500">Un asesor te contactará para resolver tus dudas y explicarte las condiciones, sin compromiso.</p>
+                                </div>
+                                
+                                <form class="lead-form space-y-5" novalidate>
+                                    <div class="relative">
+                                        <label for="name_hero" class="block text-sm font-medium text-slate-700 mb-1">Nombre y apellidos <span class="text-red-500">*</span></label>
+                                        <input type="text" id="name_hero" name="name" required class="block w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors sm:text-sm" placeholder="Ej: María García">
+                                        <p class="error-msg text-red-500 text-xs mt-1 hidden">Por favor, introduce tu nombre completo.</p>
+                                    </div>
+                                    
+                                    <div class="relative">
+                                        <label for="email_hero" class="block text-sm font-medium text-slate-700 mb-1">Correo electrónico <span class="text-red-500">*</span></label>
+                                        <input type="email" id="email_hero" name="email" required class="block w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors sm:text-sm" placeholder="tu@email.com">
+                                        <p class="error-msg text-red-500 text-xs mt-1 hidden">Introduce un correo electrónico válido.</p>
+                                    </div>
+                                    
+                                    <div class="relative">
+                                        <label for="phone_hero" class="block text-sm font-medium text-slate-700 mb-1">Teléfono <span class="text-red-500">*</span></label>
+                                        <input type="tel" id="phone_hero" name="phone" required class="block w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors sm:text-sm" placeholder="Ej: +34 600 000 000">
+                                        <p class="error-msg text-red-500 text-xs mt-1 hidden">Introduce un teléfono válido.</p>
+                                    </div>
+
+                                    <div class="relative flex items-start mt-4">
+                                        <div class="flex items-center h-5">
+                                            <input id="privacy_hero" name="privacy" type="checkbox" required class="w-4 h-4 text-brand-600 bg-white border-slate-300 rounded focus:ring-brand-500 focus:ring-2 cursor-pointer">
+                                        </div>
+                                        <div class="ml-3 text-sm">
+                                            <label for="privacy_hero" class="text-slate-500 cursor-pointer">
+                                                He leído y acepto la <button type="button" class="text-brand-600 hover:underline modal-trigger" data-modal="modal-privacidad">política de privacidad</button>. <span class="text-red-500">*</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <p class="error-msg-checkbox text-red-500 text-xs mt-1 hidden">Debes aceptar la política de privacidad.</p>
+
+                                    <!-- Hidden UTM fields -->
+                                    <input type="hidden" name="utm_source" value="">
+                                    <input type="hidden" name="utm_medium" value="">
+                                    <input type="hidden" name="utm_campaign" value="">
+                                    <input type="hidden" name="utm_term" value="">
+                                    <input type="hidden" name="utm_content" value="">
+                                    <input type="hidden" name="gclid" value="">
+
+                                    <button type="submit" class="w-full flex justify-center items-center py-3.5 px-4 border border-transparent rounded-lg shadow-sm text-base font-bold text-white bg-accent-500 hover:bg-accent-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent-500 transition-all">
+                                        <span class="btn-text">Quiero recibir información gratuita</span>
+                                        <div class="spinner hidden ml-2"></div>
+                                    </button>
+                                    
+                                    <p class="text-xs text-center text-slate-400 mt-3 flex items-center justify-center">
+                                        <svg class="w-4 h-4 mr-1 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                        </svg>
+                                        Tus datos están seguros y protegidos (RGPD)
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Barra de confianza -->
+        <div class="bg-brand-50 border-b border-brand-100 py-6">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <p class="text-center text-sm font-semibold text-brand-900 tracking-wide uppercase">
+                    Formación online práctica orientada a resultados reales en tu entorno profesional
+                </p>
+            </div>
+        </div>
+
+        <!-- 4. Problema / Agitación -->
+        <section class="py-20 bg-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold text-slate-900 mb-6">Sabes que la IA es el futuro, pero... ¿no sabes por dónde empezar?</h2>
+                <div class="space-y-6 text-lg text-slate-600">
+                    <p>Cada día escuchas hablar de nuevas herramientas. Tus competidores ya las usan para hacer el mismo trabajo en la mitad de tiempo.</p>
+                    <p>Quieres ponerte al día, pero <strong>te falta tiempo</strong>, te abruma la cantidad de información disponible y crees que hace falta ser un experto en tecnología para entenderlo.</p>
+                    <p class="font-medium text-slate-900 text-xl mt-8">No te preocupes. Hemos diseñado este programa exactamente para ti.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Solución y Beneficios -->
+        <section class="py-20 bg-slate-50 border-t border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-4">Todo lo que consigues con el programa "IA aplicada al trabajo"</h2>
+                    <p class="text-lg text-slate-600">Una metodología pensada para impactar directamente en tu día a día laboral, ahorrándote tiempo y esfuerzo.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Tarjeta 1 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-soft border border-slate-100 hover:-translate-y-1 transition-transform duration-300">
+                        <div class="w-12 h-12 bg-brand-100 rounded-xl flex items-center justify-center mb-6 text-brand-600">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Multiplica tu productividad</h3>
+                        <p class="text-slate-600">Aprende a hacer más en menos tiempo. Descubre cómo delegar tareas en la IA para centrarte en lo que realmente aporta valor.</p>
+                    </div>
+
+                    <!-- Tarjeta 2 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-soft border border-slate-100 hover:-translate-y-1 transition-transform duration-300">
+                        <div class="w-12 h-12 bg-brand-100 rounded-xl flex items-center justify-center mb-6 text-brand-600">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Automatiza lo repetitivo</h3>
+                        <p class="text-slate-600">Deja de perder horas en procesos mecánicos. Te enseñamos a conectar herramientas para que trabajen por ti en piloto automático.</p>
+                    </div>
+
+                    <!-- Tarjeta 3 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-soft border border-slate-100 hover:-translate-y-1 transition-transform duration-300">
+                        <div class="w-12 h-12 bg-brand-100 rounded-xl flex items-center justify-center mb-6 text-brand-600">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Aplícalo a tu trabajo real</h3>
+                        <p class="text-slate-600">Nada de teoría abstracta. Usarás casos de uso aplicables inmediatamente a informes, correos, análisis de datos y creación de contenido.</p>
+                    </div>
+
+                    <!-- Tarjeta 4 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-soft border border-slate-100 hover:-translate-y-1 transition-transform duration-300">
+                        <div class="w-12 h-12 bg-brand-100 rounded-xl flex items-center justify-center mb-6 text-brand-600">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Cero conocimientos técnicos</h3>
+                        <p class="text-slate-600">No necesitas saber programar ni tener un perfil técnico. Partimos de cero, explicándolo todo de forma sencilla y directa.</p>
+                    </div>
+
+                    <!-- Tarjeta 5 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-soft border border-slate-100 hover:-translate-y-1 transition-transform duration-300">
+                        <div class="w-12 h-12 bg-brand-100 rounded-xl flex items-center justify-center mb-6 text-brand-600">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Compatible con tu jornada</h3>
+                        <p class="text-slate-600">Formación 100% online y flexible, pensada específicamente para profesionales en activo que tienen agendas apretadas.</p>
+                    </div>
+
+                    <!-- Tarjeta 6 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-soft border border-slate-100 hover:-translate-y-1 transition-transform duration-300">
+                        <div class="w-12 h-12 bg-brand-100 rounded-xl flex items-center justify-center mb-6 text-brand-600">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Orientación profesional</h3>
+                        <p class="text-slate-600">Además de enseñarte a usar las herramientas, te guiamos con sesiones de orientación para que apliques este valor a tu carrera.</p>
+                    </div>
+                </div>
+
+                <div class="mt-16 text-center">
+                    <a href="#solicitar-info" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-bold rounded-lg shadow-sm text-white bg-accent-500 hover:bg-accent-600 transition-colors">
+                        Quiero recibir el temario y las condiciones
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Programa (Temario en Acordeón) -->
+        <section class="py-20 bg-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-4">¿Qué aprenderás en estas 12 semanas?</h2>
+                    <p class="text-lg text-slate-600">Un temario progresivo, práctico y sin paja, diseñado para ir al grano.</p>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Bloque 1 -->
+                    <div class="border border-slate-200 rounded-xl overflow-hidden bg-slate-50">
+                        <button class="accordion-toggle w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none focus:bg-slate-100 transition-colors" aria-expanded="false">
+                            <div class="flex items-center">
+                                <span class="flex items-center justify-center w-10 h-10 rounded-full bg-brand-100 text-brand-600 font-bold text-sm mr-4">1-3</span>
+                                <h3 class="text-lg font-bold text-slate-900">Semanas 1 a 3: Fundamentos de la IA Generativa</h3>
+                            </div>
+                            <svg class="accordion-icon w-5 h-5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div class="accordion-content bg-white px-6">
+                            <div class="pb-5 pt-2 text-slate-600">
+                                <ul class="list-disc pl-5 space-y-2">
+                                    <li>Introducción al ecosistema actual de la Inteligencia Artificial.</li>
+                                    <li>Cómo hablar con la IA: el arte del <em>prompt engineering</em>.</li>
+                                    <li>Casos de uso reales con ChatGPT y herramientas similares para redacción, análisis y resumen de textos.</li>
+                                    <li>Evitar alucinaciones y entender los límites de los modelos actuales.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bloque 2 -->
+                    <div class="border border-slate-200 rounded-xl overflow-hidden bg-slate-50">
+                        <button class="accordion-toggle w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none focus:bg-slate-100 transition-colors" aria-expanded="false">
+                            <div class="flex items-center">
+                                <span class="flex items-center justify-center w-10 h-10 rounded-full bg-brand-100 text-brand-600 font-bold text-sm mr-4">4-6</span>
+                                <h3 class="text-lg font-bold text-slate-900">Semanas 4 a 6: Automatización de Tareas y Procesos</h3>
+                            </div>
+                            <svg class="accordion-icon w-5 h-5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div class="accordion-content bg-white px-6">
+                            <div class="pb-5 pt-2 text-slate-600">
+                                <ul class="list-disc pl-5 space-y-2">
+                                    <li>Identificación de procesos automatizables en tu día a día.</li>
+                                    <li>Uso de herramientas No-Code para conectar aplicaciones (Zapier, Make).</li>
+                                    <li>Automatización de flujos de correo electrónico y gestión de datos.</li>
+                                    <li>Ejercicios prácticos: crear tu primer asistente automatizado.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bloque 3 -->
+                    <div class="border border-slate-200 rounded-xl overflow-hidden bg-slate-50">
+                        <button class="accordion-toggle w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none focus:bg-slate-100 transition-colors" aria-expanded="false">
+                            <div class="flex items-center">
+                                <span class="flex items-center justify-center w-10 h-10 rounded-full bg-brand-100 text-brand-600 font-bold text-sm mr-4">7-9</span>
+                                <h3 class="text-lg font-bold text-slate-900">Semanas 7 a 9: Herramientas Digitales para el Día a Día</h3>
+                            </div>
+                            <svg class="accordion-icon w-5 h-5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div class="accordion-content bg-white px-6">
+                            <div class="pb-5 pt-2 text-slate-600">
+                                <ul class="list-disc pl-5 space-y-2">
+                                    <li>IA para la creación de presentaciones e informes visuales.</li>
+                                    <li>Gestión de proyectos y organización del tiempo asistida por IA.</li>
+                                    <li>Tratamiento de datos y hojas de cálculo con inteligencia artificial integrada.</li>
+                                    <li>Optimización de reuniones: transcripción, resúmenes y extracción de tareas.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bloque 4 -->
+                    <div class="border border-slate-200 rounded-xl overflow-hidden bg-slate-50">
+                        <button class="accordion-toggle w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none focus:bg-slate-100 transition-colors" aria-expanded="false">
+                            <div class="flex items-center">
+                                <span class="flex items-center justify-center w-10 h-10 rounded-full bg-brand-100 text-brand-600 font-bold text-sm mr-4" style="font-size: 0.75rem;">10-12</span>
+                                <h3 class="text-lg font-bold text-slate-900">Semanas 10 a 12: Proyecto Práctico y Aplicación Profesional</h3>
+                            </div>
+                            <svg class="accordion-icon w-5 h-5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div class="accordion-content bg-white px-6">
+                            <div class="pb-5 pt-2 text-slate-600">
+                                <ul class="list-disc pl-5 space-y-2">
+                                    <li>Desarrollo de un proyecto final aplicado a tu propio trabajo.</li>
+                                    <li>Auditoría de tus propios procesos y plan de mejora continua.</li>
+                                    <li>Sesiones de orientación profesional: cómo destacar este conocimiento en tu carrera.</li>
+                                    <li>Presentación de proyectos, correcciones en directo y cierre del programa.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Metodología y 8. Para quién es -->
+        <section class="py-20 bg-slate-900 text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16">
+                    
+                    <!-- Metodología -->
+                    <div>
+                        <h2 class="text-3xl font-bold mb-8 text-white">¿Cómo es la experiencia?</h2>
+                        <ul class="space-y-6">
+                            <li class="flex">
+                                <div class="flex-shrink-0 mt-1">
+                                    <svg class="w-6 h-6 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-xl font-bold text-white">Clases en directo con profesionales</h4>
+                                    <p class="mt-2 text-slate-400">Aprenderás de expertos en activo que usan la IA a diario. Podrás hacer preguntas y resolver dudas al instante.</p>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div class="flex-shrink-0 mt-1">
+                                    <svg class="w-6 h-6 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                    </svg>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-xl font-bold text-white">Ejercicios y proyectos prácticos</h4>
+                                    <p class="mt-2 text-slate-400">La teoría se olvida, la práctica se queda. Completarás retos reales diseñados para cimentar lo aprendido.</p>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div class="flex-shrink-0 mt-1">
+                                    <svg class="w-6 h-6 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="text-xl font-bold text-white">Orientación profesional</h4>
+                                    <p class="mt-2 text-slate-400">Te ayudamos a entender cómo posicionarte en tu empresa o en el mercado laboral con tus nuevas habilidades.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Para quién es -->
+                    <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700">
+                        <h3 class="text-2xl font-bold mb-6">¿Es este programa para ti?</h3>
+                        
+                        <div class="mb-6">
+                            <h4 class="text-lg font-semibold text-emerald-400 flex items-center mb-3">
+                                <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                SÍ es para ti si...
+                            </h4>
+                            <ul class="space-y-2 text-slate-300 ml-7 list-disc">
+                                <li>Eres un profesional que quiere mejorar su productividad diaria.</li>
+                                <li>Buscas ahorrar horas automatizando tareas tediosas.</li>
+                                <li>Quieres adaptarte al mercado laboral pero no tienes base técnica.</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4 class="text-lg font-semibold text-red-400 flex items-center mb-3">
+                                <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                                NO es para ti si...
+                            </h4>
+                            <ul class="space-y-2 text-slate-300 ml-7 list-disc">
+                                <li>Buscas aprender a programar modelos de IA desde cero con Python.</li>
+                                <li>Quieres un curso teórico sobre historia y matemáticas de la IA.</li>
+                                <li>No tienes intención de aplicar lo aprendido a casos reales.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. Testimonios -->
+        <section class="py-20 bg-slate-50 border-b border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-4">Lo que dicen quienes ya aplican la IA</h2>
+                    <p class="text-lg text-slate-600">Profesionales que han transformado su manera de trabajar.</p>
+                </div>
+                
+                <!-- Sustituir por testimonios reales antes de publicar -->
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Testimonio 1 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-soft border border-slate-100">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center text-brand-600 font-bold text-xl mr-4">
+                                L
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Laura</h4>
+                                <p class="text-sm text-slate-500">Responsable de Marketing</p>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 italic">"Siempre pensé que la automatización era solo para informáticos. El curso va directo al grano: ahora me ahorro 4 horas a la semana automatizando el reporte mensual. Fue un antes y un después para mí."</p>
+                    </div>
+
+                    <!-- Testimonio 2 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-soft border border-slate-100">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center text-brand-600 font-bold text-xl mr-4">
+                                C
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Carlos</h4>
+                                <p class="text-sm text-slate-500">Consultor Financiero</p>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 italic">"Me apunté porque notaba que me quedaba atrás. La formación práctica es brutal. Ver cómo conectar herramientas que ya usaba con IA para extraer datos de pdfs me ha facilitado enormemente la vida diaria en el trabajo."</p>
+                    </div>
+
+                    <!-- Testimonio 3 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-soft border border-slate-100">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center text-brand-600 font-bold text-xl mr-4">
+                                E
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Elena</h4>
+                                <p class="text-sm text-slate-500">Gestora de Proyectos</p>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 italic">"El ritmo de las clases en directo es ideal para los que trabajamos a jornada completa. Los profesores conocen la realidad de las empresas, y las sesiones de orientación me ayudaron a enfocar mi currículum."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. Inversión y Financiación + 11. Proceso -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    
+                    <!-- Inversión -->
+                    <div class="bg-brand-50 p-10 rounded-3xl border border-brand-100 text-center lg:text-left">
+                        <h2 class="text-3xl font-bold text-slate-900 mb-4">Inversión en tu futuro</h2>
+                        <p class="text-slate-600 mb-6">Un precio transparente para una formación que rentabilizarás en tiempo ahorrado desde el primer mes.</p>
+                        <div class="text-5xl font-extrabold text-brand-600 mb-2">1.490 €</div>
+                        <p class="text-sm font-medium text-slate-500 mb-8">Pago único o posibilidad de pago fraccionado</p>
+                        
+                        <a href="#solicitar-info" class="inline-flex items-center justify-center w-full px-6 py-4 border border-transparent text-base font-bold rounded-lg shadow-sm text-white bg-accent-500 hover:bg-accent-600 transition-colors">
+                            Solicita información sin compromiso
+                        </a>
+                        <p class="mt-4 text-xs text-slate-500 text-center">Un asesor te explicará todas las condiciones de matrícula detalladas.</p>
+                    </div>
+
+                    <!-- Proceso -->
+                    <div>
+                        <h2 class="text-3xl font-bold text-slate-900 mb-8">¿Cómo funciona el proceso?</h2>
+                        <div class="space-y-8">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <div class="flex items-center justify-center w-12 h-12 rounded-full bg-brand-600 text-white font-bold text-xl">1</div>
+                                </div>
+                                <div class="ml-6">
+                                    <h4 class="text-xl font-bold text-slate-900">Solicitas información</h4>
+                                    <p class="mt-2 text-slate-600">Rellenas el breve formulario (es gratis y no te compromete a nada).</p>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <div class="flex items-center justify-center w-12 h-12 rounded-full bg-brand-600 text-white font-bold text-xl">2</div>
+                                </div>
+                                <div class="ml-6">
+                                    <h4 class="text-xl font-bold text-slate-900">Un asesor te llama</h4>
+                                    <p class="mt-2 text-slate-600">Nos ponemos en contacto contigo para entender tu situación, ver si el programa encaja con tus objetivos y resolver tus dudas.</p>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <div class="flex items-center justify-center w-12 h-12 rounded-full bg-brand-600 text-white font-bold text-xl">3</div>
+                                </div>
+                                <div class="ml-6">
+                                    <h4 class="text-xl font-bold text-slate-900">Te explica las condiciones</h4>
+                                    <p class="mt-2 text-slate-600">Te contamos al detalle el proceso de matrícula, opciones de pago fraccionado y fechas de inicio, para que tomes la decisión con toda la información.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 12. FAQ -->
+        <section class="py-20 bg-slate-50 border-t border-slate-200">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-slate-900">Preguntas frecuentes</h2>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                        <button class="accordion-toggle w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none focus:bg-slate-50" aria-expanded="false">
+                            <span class="font-bold text-slate-900">¿Tengo tiempo para hacerlo si trabajo a jornada completa?</span>
+                            <svg class="accordion-icon w-5 h-5 text-brand-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content px-6 bg-slate-50">
+                            <div class="pb-5 pt-2 text-slate-600">Sí. El programa está diseñado al 100% para profesionales en activo. Las clases y la carga de trabajo están pensadas para ser totalmente compatibles con tu jornada laboral.</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                        <button class="accordion-toggle w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none focus:bg-slate-50" aria-expanded="false">
+                            <span class="font-bold text-slate-900">¿Necesito saber programar o tener un perfil técnico?</span>
+                            <svg class="accordion-icon w-5 h-5 text-brand-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content px-6 bg-slate-50">
+                            <div class="pb-5 pt-2 text-slate-600">Absolutamente no. No se requieren conocimientos técnicos previos. Empezamos desde la base y utilizamos herramientas accesibles para cualquier profesional.</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                        <button class="accordion-toggle w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none focus:bg-slate-50" aria-expanded="false">
+                            <span class="font-bold text-slate-900">¿Qué voy a aprender exactamente?</span>
+                            <svg class="accordion-icon w-5 h-5 text-brand-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content px-6 bg-slate-50">
+                            <div class="pb-5 pt-2 text-slate-600">Aprenderás a usar la inteligencia artificial generativa, automatización de tareas, y cómo conectar diferentes herramientas digitales para aplicarlas a entornos profesionales de manera práctica, culminando en un proyecto aplicado a tu trabajo.</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                        <button class="accordion-toggle w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none focus:bg-slate-50" aria-expanded="false">
+                            <span class="font-bold text-slate-900">¿Cuál es el precio y hay opciones de pago?</span>
+                            <svg class="accordion-icon w-5 h-5 text-brand-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content px-6 bg-slate-50">
+                            <div class="pb-5 pt-2 text-slate-600">El precio del programa es de 1.490 €. Ofrecemos la posibilidad de pago fraccionado para que la inversión sea más cómoda. Cuando solicites información, un asesor te explicará los detalles de estas opciones.</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                        <button class="accordion-toggle w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none focus:bg-slate-50" aria-expanded="false">
+                            <span class="font-bold text-slate-900">¿Cómo es el formato de las clases?</span>
+                            <svg class="accordion-icon w-5 h-5 text-brand-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content px-6 bg-slate-50">
+                            <div class="pb-5 pt-2 text-slate-600">El programa es 100% online y cuenta con sesiones en directo impartidas por profesionales en activo, combinadas con ejercicios y el desarrollo de proyectos prácticos.</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                        <button class="accordion-toggle w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none focus:bg-slate-50" aria-expanded="false">
+                            <span class="font-bold text-slate-900">¿En qué consiste la orientación profesional?</span>
+                            <svg class="accordion-icon w-5 h-5 text-brand-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content px-6 bg-slate-50">
+                            <div class="pb-5 pt-2 text-slate-600">Como servicio adicional a las clases, incluimos sesiones de orientación para ayudarte a aplicar las nuevas habilidades a tu carrera laboral y guiarte en tu evolución profesional.</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                        <button class="accordion-toggle w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none focus:bg-slate-50" aria-expanded="false">
+                            <span class="font-bold text-slate-900">¿Qué pasa después de enviar el formulario?</span>
+                            <svg class="accordion-icon w-5 h-5 text-brand-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        <div class="accordion-content px-6 bg-slate-50">
+                            <div class="pb-5 pt-2 text-slate-600">Tus datos llegan de forma segura a nuestro equipo. En breve, un asesor de formación te llamará para resolver todas tus dudas y explicarte cómo funciona la matrícula sin ningún compromiso de compra.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 13. CTA Final -->
+        <section class="py-24 bg-brand-900 text-white relative overflow-hidden">
+            <div class="absolute inset-0 bg-pattern opacity-50"></div>
+            <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-4xl font-extrabold mb-6 tracking-tight">El momento de dar el salto es ahora</h2>
+                <p class="text-xl text-brand-100 mb-10 max-w-2xl mx-auto">No dejes que la IA te adelante. Fórmate, ahorra tiempo en tu trabajo diario y lidera el cambio en tu sector.</p>
+                
+                <div class="bg-white rounded-2xl p-8 max-w-md mx-auto shadow-2xl text-left">
+                    <h3 class="text-2xl font-bold text-slate-900 mb-2 text-center">Solicita información</h3>
+                    <p class="text-sm text-slate-500 mb-6 text-center">Un asesor te informará sin compromiso.</p>
+                    
+                    <form class="lead-form space-y-4" novalidate>
+                        <div class="relative">
+                            <label for="name_bottom" class="block text-sm font-medium text-slate-700 mb-1">Nombre y apellidos <span class="text-red-500">*</span></label>
+                            <input type="text" id="name_bottom" name="name" required class="block w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors sm:text-sm">
+                            <p class="error-msg text-red-500 text-xs mt-1 hidden">Por favor, introduce tu nombre completo.</p>
+                        </div>
+                        
+                        <div class="relative">
+                            <label for="email_bottom" class="block text-sm font-medium text-slate-700 mb-1">Correo electrónico <span class="text-red-500">*</span></label>
+                            <input type="email" id="email_bottom" name="email" required class="block w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors sm:text-sm">
+                            <p class="error-msg text-red-500 text-xs mt-1 hidden">Introduce un correo electrónico válido.</p>
+                        </div>
+                        
+                        <div class="relative">
+                            <label for="phone_bottom" class="block text-sm font-medium text-slate-700 mb-1">Teléfono <span class="text-red-500">*</span></label>
+                            <input type="tel" id="phone_bottom" name="phone" required class="block w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors sm:text-sm">
+                            <p class="error-msg text-red-500 text-xs mt-1 hidden">Introduce un teléfono válido.</p>
+                        </div>
+
+                        <div class="relative flex items-start mt-4">
+                            <div class="flex items-center h-5">
+                                <input id="privacy_bottom" name="privacy" type="checkbox" required class="w-4 h-4 text-brand-600 bg-white border-slate-300 rounded focus:ring-brand-500 focus:ring-2 cursor-pointer">
+                            </div>
+                            <div class="ml-3 text-sm">
+                                <label for="privacy_bottom" class="text-slate-500 cursor-pointer">
+                                    He leído y acepto la <button type="button" class="text-brand-600 hover:underline modal-trigger" data-modal="modal-privacidad">política de privacidad</button>. <span class="text-red-500">*</span>
+                                </label>
+                            </div>
+                        </div>
+                        <p class="error-msg-checkbox text-red-500 text-xs mt-1 hidden">Debes aceptar la política de privacidad.</p>
+
+                        <!-- Hidden UTM fields -->
+                        <input type="hidden" name="utm_source" value="">
+                        <input type="hidden" name="utm_medium" value="">
+                        <input type="hidden" name="utm_campaign" value="">
+                        <input type="hidden" name="utm_term" value="">
+                        <input type="hidden" name="utm_content" value="">
+                        <input type="hidden" name="gclid" value="">
+
+                        <button type="submit" class="w-full mt-2 flex justify-center items-center py-3.5 px-4 border border-transparent rounded-lg shadow-sm text-base font-bold text-white bg-accent-500 hover:bg-accent-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent-500 transition-all">
+                            <span class="btn-text">Quiero recibir información gratuita</span>
+                            <div class="spinner hidden ml-2"></div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 14. Footer -->
+    <footer class="bg-white border-t border-slate-200 pt-12 pb-24 md:pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <span class="text-2xl font-extrabold text-slate-900 tracking-tight">IMPULSA</span>
+                    <p class="text-sm text-slate-500 mt-1">Formación online para profesionales.</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-4 text-sm text-slate-600">
+                    <button type="button" class="hover:text-brand-600 transition-colors modal-trigger" data-modal="modal-aviso">Aviso Legal</button>
+                    <button type="button" class="hover:text-brand-600 transition-colors modal-trigger" data-modal="modal-privacidad">Política de Privacidad</button>
+                    <button type="button" class="hover:text-brand-600 transition-colors modal-trigger" data-modal="modal-cookies">Política de Cookies</button>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-slate-100 pt-8 flex justify-center">
+                <p class="text-sm text-slate-400">&copy; <span id="current-year"></span> IMPULSA Formación. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 15. Barra CTA Fija Móvil -->
+    <div id="sticky-cta" class="fixed bottom-0 left-0 right-0 p-4 bg-white border-t border-slate-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] z-50 transform translate-y-full transition-transform duration-300 md:hidden flex justify-center">
+        <a href="#solicitar-info" class="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-base font-bold text-white bg-accent-500 hover:bg-accent-600 transition-colors">
+            Solicitar información
+        </a>
+    </div>
+
+    <!-- Modales para Textos Legales -->
+    <div id="modal-overlay" class="fixed inset-0 bg-slate-900/50 z-[60] hidden opacity-0 transition-opacity backdrop-blur-sm" aria-hidden="true"></div>
+    
+    <!-- Modal Aviso Legal -->
+    <div id="modal-aviso" class="fixed inset-0 z-[70] hidden flex items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true">
+        <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[80vh] flex flex-col modal-enter">
+            <div class="flex justify-between items-center p-6 border-b border-slate-100">
+                <h3 class="text-xl font-bold text-slate-900">Aviso Legal</h3>
+                <button type="button" class="text-slate-400 hover:text-slate-600 modal-close p-1">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+            <div class="p-6 overflow-y-auto text-sm text-slate-600 space-y-4">
+                <p>En cumplimiento de la Ley 34/2002 de Servicios de la Sociedad de la Información y Comercio Electrónico (LSSI-CE), se informa que este sitio web es propiedad de IMPULSA Formación (empresa ficticia creada a efectos de esta página de captación de leads).</p>
+                <p>El acceso y uso del sitio web atribuye la condición de usuario e implica la aceptación plena de todas las disposiciones incluidas en este Aviso Legal. El usuario se compromete a hacer un uso adecuado de los contenidos y servicios que IMPULSA ofrece.</p>
+                <p>IMPULSA no se hace responsable de los daños y perjuicios de cualquier naturaleza que pudieran ocasionarse por errores u omisiones en los contenidos, o por la transmisión de virus o programas maliciosos a pesar de haber adoptado las medidas tecnológicas necesarias para evitarlo.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Política de Privacidad -->
+    <div id="modal-privacidad" class="fixed inset-0 z-[70] hidden flex items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true">
+        <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[80vh] flex flex-col modal-enter">
+            <div class="flex justify-between items-center p-6 border-b border-slate-100">
+                <h3 class="text-xl font-bold text-slate-900">Política de Privacidad</h3>
+                <button type="button" class="text-slate-400 hover:text-slate-600 modal-close p-1">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+            <div class="p-6 overflow-y-auto text-sm text-slate-600 space-y-4">
+                <p>De conformidad con el Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018 de Protección de Datos Personales, le informamos de cómo tratamos sus datos.</p>
+                <p><strong>Responsable:</strong> IMPULSA Formación.</p>
+                <p><strong>Finalidad:</strong> Gestionar la solicitud de información sobre el curso "IA aplicada al trabajo", contactar telefónicamente o por correo electrónico para resolver dudas e informar sobre el proceso de matrícula.</p>
+                <p><strong>Legitimación:</strong> Su consentimiento expreso otorgado al marcar la casilla correspondiente en el formulario.</p>
+                <p><strong>Destinatarios:</strong> No se cederán datos a terceros, salvo obligación legal. Los datos serán procesados a través de nuestro CRM interno con las debidas garantías de seguridad.</p>
+                <p><strong>Derechos:</strong> Podrá acceder, rectificar, suprimir, oponerse, limitar el tratamiento y solicitar la portabilidad de sus datos dirigiendo una comunicación a info@impulsa.ejemplo.es.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Política de Cookies -->
+    <div id="modal-cookies" class="fixed inset-0 z-[70] hidden flex items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true">
+        <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[80vh] flex flex-col modal-enter">
+            <div class="flex justify-between items-center p-6 border-b border-slate-100">
+                <h3 class="text-xl font-bold text-slate-900">Política de Cookies</h3>
+                <button type="button" class="text-slate-400 hover:text-slate-600 modal-close p-1">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+            <div class="p-6 overflow-y-auto text-sm text-slate-600 space-y-4">
+                <p>Una cookie es un pequeño archivo que se descarga en su equipo con la finalidad de almacenar datos que podrán ser actualizados y recuperados por la entidad responsable de su instalación.</p>
+                <p><strong>Tipos de cookies que utilizamos:</strong></p>
+                <ul class="list-disc pl-5 space-y-2">
+                    <li><em>Cookies técnicas:</em> Necesarias para la navegación y el buen funcionamiento de nuestra página web.</li>
+                    <li><em>Cookies de análisis:</em> Tratadas por nosotros o por terceros (ej. Google Analytics) para cuantificar el número de usuarios y realizar la medición y análisis estadístico de la utilización de la web.</li>
+                    <li><em>Cookies publicitarias:</em> Nos permiten gestionar la oferta de los espacios publicitarios en base a criterios como el contenido o la frecuencia de los anuncios (ej. Google Ads).</li>
+                </ul>
+                <p>Puede usted permitir, bloquear o eliminar las cookies instaladas en su equipo mediante la configuración de las opciones del navegador instalado en su ordenador.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Javascript Core -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. Constante para CRM / Backend
+            // Se debe establecer aquí la URL del webhook o API de captación
+            const FORM_ENDPOINT = ""; 
+
+            // 2. Set current year
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // 3. Capturar UTMs de la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const utmParams = {
+                utm_source: urlParams.get('utm_source') || '',
+                utm_medium: urlParams.get('utm_medium') || '',
+                utm_campaign: urlParams.get('utm_campaign') || '',
+                utm_term: urlParams.get('utm_term') || '',
+                utm_content: urlParams.get('utm_content') || '',
+                gclid: urlParams.get('gclid') || ''
+            };
+
+            // Rellenar campos ocultos en todos los formularios
+            document.querySelectorAll('.lead-form').forEach(form => {
+                for (const [key, value] of Object.entries(utmParams)) {
+                    const input = form.querySelector(`input[name="${key}"]`);
+                    if (input) input.value = value;
+                }
+            });
+
+            // 4. Lógica de validación y envío de formularios
+            document.querySelectorAll('.lead-form').forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    let isValid = true;
+                    const name = form.querySelector('input[name="name"]');
+                    const email = form.querySelector('input[name="email"]');
+                    const phone = form.querySelector('input[name="phone"]');
+                    const privacy = form.querySelector('input[name="privacy"]');
+                    
+                    // Resetear mensajes de error
+                    form.querySelectorAll('.error-msg, .error-msg-checkbox').forEach(el => el.classList.add('hidden'));
+                    form.querySelectorAll('input').forEach(el => el.classList.remove('border-red-500', 'focus:border-red-500', 'focus:ring-red-500'));
+
+                    // Validación básica
+                    if (name.value.trim().length < 2) {
+                        showError(name);
+                        isValid = false;
+                    }
+                    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
+                        showError(email);
+                        isValid = false;
+                    }
+                    if (phone.value.trim().length < 6) { // Validación muy básica para números internacionales/nacionales
+                        showError(phone);
+                        isValid = false;
+                    }
+                    if (!privacy.checked) {
+                        const err = form.querySelector('.error-msg-checkbox');
+                        if(err) err.classList.remove('hidden');
+                        isValid = false;
+                    }
+
+                    if (isValid) {
+                        const btn = form.querySelector('button[type="submit"]');
+                        const btnText = btn.querySelector('.btn-text');
+                        const spinner = btn.querySelector('.spinner');
+                        
+                        // Estado de carga
+                        btn.disabled = true;
+                        btnText.textContent = "Procesando...";
+                        spinner.classList.remove('hidden');
+
+                        // Recopilar datos
+                        const formData = new FormData(form);
+                        const dataPayload = Object.fromEntries(formData.entries());
+
+                        // Lógica de envío
+                        if (FORM_ENDPOINT !== "") {
+                            // Fetch real si hay endpoint
+                            fetch(FORM_ENDPOINT, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify(dataPayload)
+                            }).then(res => {
+                                handleSuccess(form);
+                            }).catch(err => {
+                                console.error('Error enviando lead:', err);
+                                alert('Hubo un error al enviar tu solicitud. Por favor, inténtalo de nuevo.');
+                                resetBtn(btn, btnText, spinner);
+                            });
+                        } else {
+                            // Simulación (setTimeout) si no hay endpoint
+                            setTimeout(() => {
+                                handleSuccess(form);
+                            }, 1200);
+                        }
+                    }
+                });
+            });
+
+            function showError(inputElement) {
+                inputElement.classList.add('border-red-500', 'focus:border-red-500', 'focus:ring-red-500');
+                const errMsg = inputElement.parentElement.querySelector('.error-msg');
+                if (errMsg) errMsg.classList.remove('hidden');
+            }
+
+            function resetBtn(btn, btnText, spinner) {
+                btn.disabled = false;
+                btnText.textContent = "Quiero recibir información gratuita";
+                spinner.classList.add('hidden');
+            }
+
+            function handleSuccess(formElement) {
+                // Evento para Google Analytics / Tag Manager
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                    'event': 'lead_submitted',
+                    'form_id': formElement.id || 'lead_form'
+                });
+
+                // Reemplazar formulario con mensaje de éxito
+                const successHTML = `
+                    <div class="text-center py-8 px-4 animate-fade-in">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">¡Solicitud recibida!</h3>
+                        <p class="text-slate-600">Un asesor de formación se pondrá en contacto contigo muy pronto para resolver tus dudas y explicarte todos los detalles del programa.</p>
+                    </div>
+                `;
+                
+                // Animación suave de transición
+                const container = formElement.parentElement;
+                container.style.height = container.offsetHeight + 'px';
+                formElement.style.opacity = '0';
+                
+                setTimeout(() => {
+                    formElement.remove();
+                    container.innerHTML += successHTML;
+                    container.style.height = 'auto';
+                }, 300);
+            }
+
+            // 5. Acordeones (Programa y FAQ)
+            document.querySelectorAll('.accordion-toggle').forEach(button => {
+                button.addEventListener('click', () => {
+                    const content = button.nextElementSibling;
+                    const icon = button.querySelector('.accordion-icon');
+                    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+                    
+                    button.setAttribute('aria-expanded', !isExpanded);
+                    content.classList.toggle('open');
+                    icon.classList.toggle('open');
+                });
+            });
+
+            // 6. Intersection Observer para Sticky CTA Móvil
+            const heroSection = document.getElementById('hero');
+            const stickyCta = document.getElementById('sticky-cta');
+            
+            if (heroSection && stickyCta) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (!entry.isIntersecting) {
+                            // Cuando el hero ya no se ve, mostrar sticky bar
+                            stickyCta.classList.remove('translate-y-full');
+                        } else {
+                            // Cuando el hero se ve, ocultar sticky bar
+                            stickyCta.classList.add('translate-y-full');
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                observer.observe(heroSection);
+            }
+
+            // 7. Modales de Textos Legales
+            const modalOverlay = document.getElementById('modal-overlay');
+            const modals = document.querySelectorAll('[role="dialog"]');
+            
+            function openModal(modalId) {
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modalOverlay.classList.remove('hidden');
+                    modal.classList.remove('hidden');
+                    // Retraso ligero para la animación
+                    setTimeout(() => {
+                        modalOverlay.classList.remove('opacity-0');
+                        modal.querySelector('.modal-enter').classList.add('modal-enter-active');
+                    }, 10);
+                    document.body.style.overflow = 'hidden'; // Prevenir scroll
+                }
+            }
+
+            function closeModals() {
+                modalOverlay.classList.add('opacity-0');
+                modals.forEach(modal => {
+                    const content = modal.querySelector('.modal-enter');
+                    if(content) content.classList.remove('modal-enter-active');
+                });
+                
+                setTimeout(() => {
+                    modalOverlay.classList.add('hidden');
+                    modals.forEach(modal => modal.classList.add('hidden'));
+                    document.body.style.overflow = '';
+                }, 300);
+            }
+
+            document.querySelectorAll('.modal-trigger').forEach(trigger => {
+                trigger.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const modalId = trigger.getAttribute('data-modal');
+                    openModal(modalId);
+                });
+            });
+
+            document.querySelectorAll('.modal-close').forEach(closeBtn => {
+                closeBtn.addEventListener('click', closeModals);
+            });
+
+            modalOverlay.addEventListener('click', closeModals);
+            
+            // Cerrar modal con Escape
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeModals();
+            });
+        });
+    </script>
+</body>
+</html>
